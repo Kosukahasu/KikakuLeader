@@ -5,19 +5,8 @@ node_js:
 cache: npm
 
 script:
+  - npm install
   - npm run build
-  - sed -i 's/=\/css/=.\/css/g' ./dist/index.html
-  - sed -i 's/=\/favicon.ico/=.\/favicon.ico/g' ./dist/index.html
-  - sed -i 's/=\/js/=.\/js/g' ./dist/index.html
-
-deploy:
- provider: pages
- skip_cleanup: true
- github_token: $GITHUB_TOKEN
- local_dir: dist
- on:
-   branch: master
-
 branches:
   only:
   - master
